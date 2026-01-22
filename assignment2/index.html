@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Pizza Ordering Form</title>
+  </head>
+
+  <body>
+    <h1>Pizza Ordering Form</h1>
+
+    <form action="#" method="post">
+      <h2>Contact Information</h2>
+
+      <p>
+        <label for="name">Name:</label>
+        <input id="name" name="name" type="text" required />
+      </p>
+
+      <p>
+        <label for="phone">Phone:</label>
+        <input
+        id="phone"
+        name="phone"
+        type="tel"
+        required
+        pattern="[0-9]{10}"
+        maxlength="10"
+        inputmode="numeric"
+        />
+      </p>
+
+      <p>
+        <label for="email">Email:</label>
+        <input
+        id="email"
+        name="email"
+        type="email"
+        required
+        />
+      </p>
+
+      <h2>Select Pizza Size</h2>
+
+      <p>
+        <label for="size">Pizza Size:</label>
+        <select id="size" name="size" required>
+          <option value="">--Select Size--</option>
+          <option value="Medium">Medium</option>
+          <option value="Large">Large</option>
+          <option value="XLarge">XLarge</option>
+        </select>
+      </p>
+
+      <h2>Select Sauce</h2>
+
+      <fieldset>
+        <legend>Sauce Type</legend>
+
+        <p>
+          <input
+            id="marinara"
+            name="sauce"
+            type="radio"
+            value="Marinara"
+            required
+          />
+          <label for="marinara">Marinara</label>
+        </p>
+
+        <p>
+          <input id="ranch" name="sauce" type="radio" value="Ranch" />
+          <label for="ranch">Ranch</label>
+        </p>
+
+        <p>
+          <input id="nosauce" name="sauce" type="radio" value="No Sauce" />
+          <label for="nosauce">No Sauce</label>
+        </p>
+      </fieldset>
+
+      <h2>Select Toppings</h2>
+
+      <fieldset>
+        <legend>Toppings</legend>
+
+        <p>
+          <input
+            id="pepperoni"
+            name="toppings"
+            type="checkbox"
+            value="Pepperoni"
+          />
+          <label for="pepperoni">Pepperoni</label>
+        </p>
+
+        <p>
+          <input
+            id="sausage"
+            name="toppings"
+            type="checkbox"
+            value="Sausage"
+          />
+          <label for="sausage">Sausage</label>
+        </p>
+
+        <p>
+          <input
+            id="mushrooms"
+            name="toppings"
+            type="checkbox"
+            value="Mushrooms"
+          />
+          <label for="mushrooms">Mushrooms</label>
+        </p>
+
+        <p>
+          <input
+            id="pineapple"
+            name="toppings"
+            type="checkbox"
+            value="Pineapple"
+          />
+          <label for="pineapple">Pineapple</label>
+        </p>
+
+        <p>
+          <input
+            id="peppers"
+            name="toppings"
+            type="checkbox"
+            value="Peppers"
+          />
+          <label for="peppers">Peppers</label>
+        </p>
+
+        <p>
+          <input
+            id="onions"
+            name="toppings"
+            type="checkbox"
+            value="Onions"
+          />
+          <label for="onions">Onions</label>
+        </p>
+      </fieldset>
+
+      <h2>Additional Instructions</h2>
+
+      <p>
+        <textarea
+          id="instructions"
+          name="instructions"
+          rows="4"
+          cols="30"
+          placeholder="Add instructions"
+        ></textarea>
+      </p>
+
+      <p>
+        <button type="submit">Submit</button>
+      </p>
+    </form>
+
+    <h2>List of My Favorite Games</h2>
+
+    <table border="1">
+      <thead>
+        <tr>
+          <th colspan="3">Favorite Video Games</th>
+        </tr>
+        <tr>
+          <th scope="col">Developer</th>
+          <th scope="col">Title</th>
+          <th scope="col">Year</th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <tr>
+          <th rowspan="3" scope="rowgroup">Maxis</th>
+          <td>Spore</td>
+          <td>2008</td>
+        </tr>
+        <tr>
+          <td>The Sims 3</td>
+          <td>2009</td>
+        </tr>
+        <tr>
+          <td>The Sims 4</td>
+          <td>2014</td>
+        </tr>
+
+        <tr>
+          <th scope="row">Mojang</th>
+          <td>Minecraft</td>
+          <td>2011</td>
+        </tr>
+
+        <tr>
+          <td colspan="3">Count: 4</td>
+        </tr>
+      </tbody>
+    </table>
+  </body>
+</html>
