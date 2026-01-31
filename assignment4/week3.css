@@ -1,0 +1,252 @@
+/* Week 3 – CSS Positioning and Layout */
+/* Goals met:
+   - Jump menu fixed on the left, full height
+   - Header fixed on top, does not scroll
+   - Header centers within remaining space (excludes jump menu width)
+   - "Thank you for visiting" fixed bottom-right
+   - Articles laid out neatly and reflow on resize (fixed article width)
+*/
+
+:root{
+  --jump-width: 15%;
+  --header-height: 96px;
+  --gap: 18px;
+  --card-width: 300px;
+  --bg: #f5f6fb;
+  --panel: #ffffff;
+  --ink: #1a1a1a;
+  --muted: #5a6270;
+  --accent: #2a6df4;
+  --border: rgba(0,0,0,.10);
+}
+
+*{ box-sizing: border-box; }
+
+html, body{
+  height: 100%;
+}
+
+body{
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  line-height: 1.45;
+  color: var(--ink);
+  background: var(--bg);
+}
+
+/* LEFT JUMP MENU */
+#jumpMenu{
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;              /* full height */
+  width: var(--jump-width);
+  min-width: 180px;       /* keeps it readable on small screens */
+  padding: 18px 14px;
+  background: #111827;
+  color: #ffffff;
+  overflow-y: auto;
+  z-index: 30;
+  border-right: 1px solid rgba(255,255,255,.10);
+}
+
+#jumpMenu h2{
+  margin: 0 0 12px 0;
+  font-size: 16px;
+  letter-spacing: .2px;
+  opacity: .95;
+}
+
+#jumpMenu a{
+  display: block;
+  padding: 8px 10px;
+  margin: 2px 0;
+  color: rgba(255,255,255,.92);
+  text-decoration: none;
+  border-radius: 10px;
+  font-size: 14px;
+}
+
+#jumpMenu a:hover{
+  background: rgba(255,255,255,.10);
+}
+
+/* MAIN AREA (everything to the right of jump menu) */
+main{
+  margin-left: var(--jump-width);
+  padding-top: calc(var(--header-height) + 18px);
+  padding-left: 26px;
+  padding-right: 26px;
+  padding-bottom: 90px; /* room above footer + thanks bubble overlap */
+}
+
+/* FIXED HEADER */
+header{
+  position: fixed;
+  top: 0;
+  left: var(--jump-width);
+  width: calc(100% - var(--jump-width));
+  height: var(--header-height);
+  background: rgba(255,255,255,.92);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--border);
+  z-index: 25;
+  display: flex;
+  align-items: center;
+}
+
+/* inner header layout: centered content without counting jump menu width */
+header > p,
+header > nav{
+  margin: 0;
+}
+
+header{
+  padding: 14px 18px;
+}
+
+header::before{
+  content: "";
+  flex: 1 1 auto;
+}
+
+header::after{
+  content: "";
+  flex: 1 1 auto;
+}
+
+/* Wrap header content in a centered row using the existing elements */
+header > p{
+  font-weight: 800;
+  letter-spacing: .3px;
+  font-size: 22px;
+  padding-right: 18px;
+}
+
+header > nav{
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* Buttons in header */
+header button{
+  border: 1px solid rgba(0,0,0,.12);
+  background: #ffffff;
+  color: var(--ink);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 13px;
+  transition: transform .06s ease, background .12s ease;
+}
+
+header button:hover{
+  background: #f1f5ff;
+  border-color: rgba(42,109,244,.35);
+}
+
+header button:active{
+  transform: translateY(1px);
+}
+
+/* Title */
+h1{
+  margin: 0 0 16px 0;
+  font-size: 26px;
+  letter-spacing: .2px;
+}
+
+/* ARTICLES CONTAINER */
+#container{
+  display: flex;
+  flex-wrap: wrap;                 /* reflow on resize */
+  gap: var(--gap);
+  align-items: stretch;
+}
+
+/* Each journal article is a fixed-width card */
+#container article{
+  width: var(--card-width);
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 16px 16px 14px 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,.06);
+}
+
+#container article h2{
+  margin: 0 0 10px 0;
+  font-size: 18px;
+}
+
+#container article p{
+  margin: 0 0 10px 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+#container article a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 700;
+}
+
+#container article a:hover{
+  text-decoration: underline;
+}
+
+/* THANK YOU BLOCK – always bottom-right */
+#thanks{
+  position: fixed;
+  right: 18px;
+  bottom: 18px;
+  margin: 0;
+  padding: 12px 14px;
+  background: #111827;
+  color: #ffffff;
+  border-radius: 14px;
+  box-shadow: 0 14px 30px rgba(0,0,0,.22);
+  z-index: 40;
+  font-weight: 700;
+  letter-spacing: .2px;
+}
+
+/* FOOTER */
+footer{
+  margin-top: 26px;
+  padding: 18px;
+  background: rgba(255,255,255,.8);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+footer p{
+  margin: 0 0 10px 0;
+  font-weight: 800;
+}
+
+address{
+  font-style: normal;
+  color: var(--muted);
+}
+
+address span{
+  display: inline-block;
+  margin-right: 8px;
+}
+
+/* Small screens: keep jump menu usable and reduce header height */
+@media (max-width: 700px){
+  :root{
+    --jump-width: 200px;
+    --header-height: 110px;
+    --card-width: 280px;
+  }
+  main{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
